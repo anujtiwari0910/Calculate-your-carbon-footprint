@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Code Your Carbon - Personal carbon footprint calculator and lifestyle decision engine."
+    >
+
+    <title>Code Your Carbon</title>
+
+
+    <!-- =====================================================
+         CHART.JS
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+        defer
+    ></script>
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a
+            href="#"
+            class="brand"
+        >
+
+            <div class="brand-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <strong>
+                    Code Your Carbon
+                </strong>
+
+                <span>
+                    Personal Carbon Intelligence
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a href="#calculator">
+                Calculator
+            </a>
+
+            <a href="#what-if">
+                What-If
+            </a>
+
+            <a href="#dashboard">
+                Dashboard
+            </a>
+
+            <a href="#history">
+                History
+            </a>
+
+        </nav>
+
+
+        <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">
+                🌍 PERSONAL CARBON INTELLIGENCE
+            </span>
+
+
+            <h1>
+                Understand your carbon.
+                <span>
+                    Change your future.
+                </span>
+            </h1>
+
+
+            <p class="hero-description">
+
+                Measure your daily carbon footprint,
+                discover your biggest sources,
+                simulate lifestyle changes,
+                and build a practical plan to reduce your impact.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#calculator"
+                    class="primary-btn"
+                >
+                    Calculate my footprint →
+                </a>
+
+                <a
+                    href="#what-if"
+                    class="secondary-btn"
+                >
+                    Explore What-If
+                </a>
+
+            </div>
+
+
+            <div class="hero-features">
+
+                <span>
+                    ✓ Personalized
+                </span>
+
+                <span>
+                    ✓ What-If scenarios
+                </span>
+
+                <span>
+                    ✓ Progress tracking
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-card-top">
+
+                <span>
+                    Your current footprint
+                </span>
+
+                <span class="status-dot">
+                    ●
+                </span>
+
+            </div>
+
+
+            <div
+                id="heroFootprint"
+                class="hero-number"
+            >
+                0.00 kg
+            </div>
+
+
+            <div class="hero-unit">
+                CO₂e / day
+            </div>
+
+
+            <div class="hero-card-footer">
+
+                <span>
+                    Calculate to see your result
+                </span>
+
+                <span>
+                    🌱
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CALCULATOR
+========================================================= -->
+
+<section
+    id="calculator"
+    class="section"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                STEP 01
+            </span>
+
+            <h2>
+                Calculate your footprint
+            </h2>
+
+            <p>
+                Enter your typical daily lifestyle information.
+            </p>
+
+        </div>
+
+
+        <div class="calculator-layout">
+
+
+            <!-- =================================================
+                 CALCULATOR FORM
+            ================================================== -->
+
+            <div class="card calculator-card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">
+                        🚗
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Your daily lifestyle
+                        </h3>
+
+                        <p>
+                            Estimate your major carbon sources.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSPORT -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span>
+                            🚗 Transport
+                        </span>
+
+                        <small>
+                            Daily travel
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="transportMode">
+                                Main transport
+                            </label>
+
+                            <select id="transportMode">
+
+                                <option value="car">
+                                    Car
+                                </option>
+
+                                <option value="bike">
+                                    Motorcycle / Scooter
+                                </option>
+
+                                <option value="bus">
+                                    Bus
+                                </option>
+
+                                <option value="metro">
+                                    Metro
+                                </option>
+
+                                <option value="walk">
+                                    Walking / Cycling
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div
+                            class="form-group"
+                            id="fuelGroup"
+                        >
+
+                            <label for="fuelType">
+                                Fuel / vehicle type
+                            </label>
+
+                            <select id="fuelType">
+
+                                <option value="petrol">
+                                    Petrol
+                                </option>
+
+                                <option value="diesel">
+                                    Diesel
+                                </option>
+
+                                <option value="cng">
+                                    CNG
+                                </option>
+
+                                <option value="ev">
+                                    Electric
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="distance">
+                                Distance per day
+                            </label>
+
+                            <div class="input-with-unit">
+
+                                <input
+                                    id="distance"
+                                    type="number"
+                                    min="0"
+                                    step="0.1"
+                                    value="10"
+                                >
+
+                                <span>
+                                    km
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="passengers">
+                                People in vehicle
+                            </label>
+
+                            <input
+                                id="passengers"
+                                type="number"
+                                min="1"
+                                step="1"
+                                value="1"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ELECTRICITY -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span>
+                            ⚡ Electricity
+                        </span>
+
+                        <small>
+                            Household share
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="electricity">
+                                Electricity use
+                            </label>
+
+                            <div class="input-with-unit">
+
+                                <input
+                                    id="electricity"
+                                    type="number"
+                                    min="0"
+                                    step="0.1"
+                                    value="5"
+                                >
+
+                                <span>
+                                    kWh/day
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="solar">
+                                Solar / renewable share
+                            </label>
+
+                            <div class="range-wrapper">
+
+                                <input
+                                    id="solar"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="0"
+                                >
+
+                                <span
+                                    id="solarValue"
+                                    class="range-value"
+                                >
+                                    0%
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOD -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span>
+                            🍽 Food
+                        </span>
+
+                        <small>
+                            Daily meals
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="vegMeals">
+                                Vegetarian meals
+                            </label>
+
+                            <input
+                                id="vegMeals"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="2"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="nonVegMeals">
+                                Non-vegetarian meals
+                            </label>
+
+                            <input
+                                id="nonVegMeals"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="1"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WASTE -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span>
+                            ♻️ Waste
+                        </span>
+
+                        <small>
+                            Daily waste generation
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="waste">
+                                Waste
+                            </label>
+
+                            <div class="input-with-unit">
+
+                                <input
+                                    id="waste"
+                                    type="number"
+                                    min="0"
+                                    step="0.1"
+                                    value="1"
+                                >
+
+                                <span>
+                                    kg/day
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="recycling">
+                                Recycling
+                            </label>
+
+                            <div class="range-wrapper">
+
+                                <input
+                                    id="recycling"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="0"
+                                >
+
+                                <span
+                                    id="recyclingValue"
+                                    class="range-value"
+                                >
+                                    0%
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COOKING -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span>
+                            🍳 Cooking
+                        </span>
+
+                        <small>
+                            Cooking energy
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="cookingFuel">
+                                Cooking fuel
+                            </label>
+
+                            <select id="cookingFuel">
+
+                                <option value="lpg">
+                                    LPG
+                                </option>
+
+                                <option value="electric">
+                                    Electric
+                                </option>
+
+                                <option value="png">
+                                    PNG
+                                </option>
+
+                                <option value="biogas">
+                                    Biogas
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="cookingTime">
+                                Cooking time
+                            </label>
+
+                            <div class="input-with-unit">
+
+                                <input
+                                    id="cookingTime"
+                                    type="number"
+                                    min="0"
+                                    step="0.1"
+                                    value="1"
+                                >
+
+                                <span>
+                                    hr/day
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="button-row">
+
+                    <button
+                        id="calculateBtn"
+                        class="primary-btn"
+                        type="button"
+                    >
+                        Calculate footprint →
+                    </button>
+
+
+                    <button
+                        id="resetFormBtn"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 QUICK INFO
+            ================================================== -->
+
+            <aside class="calculator-sidebar">
+
+                <div class="card info-card">
+
+                    <span class="info-icon">
+                        💡
+                    </span>
+
+                    <h3>
+                        Why track your footprint?
+                    </h3>
+
+                    <p>
+                        Understanding where your emissions
+                        come from makes it easier to identify
+                        practical changes.
+                    </p>
+
+                </div>
+
+
+                <div class="card info-card">
+
+                    <span class="info-icon">
+                        🔎
+                    </span>
+
+                    <h3>
+                        Your data
+                    </h3>
+
+                    <p>
+                        Your calculations are stored locally
+                        in your browser for history and trends.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESULTS
+========================================================= -->
+
+<section
+    id="results"
+    class="section results-section hidden"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                STEP 02
+            </span>
+
+            <h2>
+                Understand your footprint
+            </h2>
+
+            <p>
+                See what contributes most to your daily emissions.
+            </p>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="result-summary-grid">
+
+
+            <div class="card result-main-card">
+
+                <span class="result-label">
+                    DAILY FOOTPRINT
+                </span>
+
+                <div class="result-number">
+
+                    <span id="totalFootprint">
+                        0.00
+                    </span>
+
+                    <small>
+                        kg CO₂e
+                    </small>
+
+                </div>
+
+
+                <div class="result-score-row">
+
+                    <span>
+                        Footprint score
+                    </span>
+
+                    <span
+                        id="scoreBadge"
+                        class="score-badge"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="card hotspot-card">
+
+                <span class="result-label">
+                    BIGGEST SOURCE
+                </span>
+
+                <div
+                    id="hotspot"
+                    class="hotspot-title"
+                >
+                    —
+                </div>
+
+                <p id="hotspotText">
+                    Calculate your footprint to identify
+                    your biggest carbon source.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BREAKDOWN -->
+
+        <div class="result-grid">
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Emission breakdown
+                        </h3>
+
+                        <p>
+                            Where your footprint comes from.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="breakdownChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">
+                        🧮
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            How was this calculated?
+                        </h3>
+
+                        <p>
+                            Your estimated contribution by category.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="calculationBreakdown"
+                    class="calculation-breakdown"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STANDARD ACTIONS -->
+
+        <div class="card action-card">
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    🌱
+                </div>
+
+                <div>
+
+                    <h3>
+                        Suggested actions
+                    </h3>
+
+                    <p>
+                        General ways to reduce your footprint.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="actionList"
+                class="action-list"
+            ></div>
+
+        </div>
+
+
+        <!-- =================================================
+             PERSONAL ACTION PLAN
+        ================================================== -->
+
+        <div class="card action-plan-card">
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>
+                        Your Personal Action Plan
+                    </h3>
+
+                    <p>
+                        Small changes based on your biggest
+                        carbon sources.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="personalActionPlan">
+
+                <div class="action-plan-empty">
+
+                    <strong>
+                        Calculate your footprint first.
+                    </strong>
+
+                    <span>
+                        Your personalized recommendations
+                        will appear here.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHAT IF
+========================================================= -->
+
+<section
+    id="what-if"
+    class="section"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                STEP 03
+            </span>
+
+            <h2>
+                Build a better scenario
+            </h2>
+
+            <p>
+                Combine multiple lifestyle changes and see
+                how your footprint could change.
+            </p>
+
+        </div>
+
+
+        <div class="card what-if-card">
+
+            <div class="what-if-grid">
+
+
+                <!-- TRANSPORT -->
+
+                <div class="scenario-control">
+
+                    <label for="whatIfTransport">
+                        🚗 Transport
+                    </label>
+
+                    <select id="whatIfTransport">
+
+                        <option value="car">
+                            Car
+                        </option>
+
+                        <option value="bike">
+                            Motorcycle / Scooter
+                        </option>
+
+                        <option value="bus">
+                            Bus
+                        </option>
+
+                        <option value="metro">
+                            Metro
+                        </option>
+
+                        <option value="walk">
+                            Walking / Cycling
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FOOD -->
+
+                <div class="scenario-control">
+
+                    <label for="whatIfVeg">
+                        🥗 Replace non-veg meals
+                    </label>
+
+                    <input
+                        id="whatIfVeg"
+                        type="number"
+                        min="0"
+                        step="1"
+                        value="0"
+                    >
+
+                    <small>
+                        Meals/day
+                    </small>
+
+                </div>
+
+
+                <!-- ELECTRICITY -->
+
+                <div class="scenario-control">
+
+                    <label for="whatIfElectricity">
+                        ⚡ Reduce electricity
+                    </label>
+
+                    <div class="range-wrapper">
+
+                        <input
+                            id="whatIfElectricity"
+                            type="range"
+                            min="0"
+                            max="50"
+                            value="0"
+                        >
+
+                        <span
+                            id="whatIfElectricityValue"
+                            class="range-value"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WASTE -->
+
+                <div class="scenario-control">
+
+                    <label for="whatIfWaste">
+                        ♻️ Reduce waste
+                    </label>
+
+                    <div class="range-wrapper">
+
+                        <input
+                            id="whatIfWaste"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="0"
+                        >
+
+                        <span
+                            id="whatIfWasteValue"
+                            class="range-value"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SOLAR -->
+
+                <div class="scenario-control">
+
+                    <label for="whatIfSolar">
+                        ☀️ Renewable electricity
+                    </label>
+
+                    <div class="range-wrapper">
+
+                        <input
+                            id="whatIfSolar"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="0"
+                        >
+
+                        <span
+                            id="whatIfSolarValue"
+                            class="range-value"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCENARIO RESULT -->
+
+            <div class="scenario-result">
+
+                <div>
+
+                    <span>
+                        Scenario footprint
+                    </span>
+
+                    <strong>
+                        <span id="scenarioFootprint">
+                            0.00
+                        </span>
+                        kg/day
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Potential saving
+                    </span>
+
+                    <strong>
+                        <span id="scenarioSaving">
+                            0.00
+                        </span>
+                        kg/day
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    id="scenarioProgress"
+                    class="progress-bar"
+                ></div>
+
+            </div>
+
+
+            <p
+                id="scenarioText"
+                class="scenario-text"
+            >
+                Calculate your footprint and then adjust
+                the scenario controls.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section
+    id="dashboard"
+    class="section"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                STEP 04
+            </span>
+
+            <h2>
+                Your carbon dashboard
+            </h2>
+
+            <p>
+                Set a target, build habits and understand your trends.
+            </p>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div class="card budget-card">
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>
+                        Carbon budget
+                    </h3>
+
+                    <p>
+                        Set your personal daily target.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="budget-form">
+
+                <div class="form-group">
+
+                    <label for="carbonBudget">
+                        Daily carbon budget
+                    </label>
+
+                    <div class="input-with-unit">
+
+                        <input
+                            id="carbonBudget"
+                            type="number"
+                            min="0"
+                            step="0.1"
+                            placeholder="e.g. 5"
+                        >
+
+                        <span>
+                            kg/day
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="saveBudget"
+                    class="primary-btn"
+                    type="button"
+                >
+                    Save budget
+                </button>
+
+            </div>
+
+
+            <div class="budget-status">
+
+                <div
+                    id="budgetStatus"
+                    class="status-message"
+                >
+                    Set a budget to start tracking.
+                </div>
+
+
+                <div class="progress-track">
+
+                    <div
+                        id="budgetProgress"
+                        class="progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MISSIONS + TWIN -->
+
+        <div class="dashboard-grid">
+
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">
+                        🏆
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Missions
+                        </h3>
+
+                        <p>
+                            Simple actions to build better habits.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="missions"
+                    class="missions-grid"
+                ></div>
+
+            </div>
+
+
+            <div class="card twin-card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Carbon Twin
+                        </h3>
+
+                        <p>
+                            A simple picture of your personal pattern.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="twinTitle"
+                    class="twin-title"
+                >
+                    Your Carbon Twin
+                </div>
+
+
+                <p id="twinDescription">
+
+                    Calculate your footprint a few times
+                    to build a personal footprint pattern.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HISTORY
+========================================================= -->
+
+<section
+    id="history"
+    class="section"
+>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                STEP 05
+            </span>
+
+            <h2>
+                Your footprint history
+            </h2>
+
+            <p>
+                Track your progress over time.
+            </p>
+
+        </div>
+
+
+        <div class="card history-card">
+
+            <div class="history-header">
+
+                <div>
+
+                    <h3>
+                        Progress
+                    </h3>
+
+                    <p>
+                        Your latest calculations are stored locally.
+                    </p>
+
+                </div>
+
+
+                <div class="history-buttons">
+
+                    <button
+                        id="clearHistoryBtn"
+                        class="small-btn danger-btn"
+                        type="button"
+                    >
+                        🗑 Clear History
+                    </button>
+
+
+                    <button
+                        id="downloadBtn"
+                        class="small-btn"
+                        type="button"
+                    >
+                        ⬇ Download
+                    </button>
+
+
+                    <button
+                        id="shareBtn"
+                        class="small-btn"
+                        type="button"
+                    >
+                        ↗ Share
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-chart-wrapper">
+
+                <canvas
+                    id="historyChart"
+                ></canvas>
+
+            </div>
+
+
+            <div
+                id="historyList"
+                class="history-list"
+            >
+
+                <div class="history-empty">
+
+                    No calculations yet.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     METHODOLOGY
+========================================================= -->
+
+<section class="section methodology-section">
+
+    <div class="container">
+
+        <div class="card methodology-card">
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <h3>
+                        Methodology
+                    </h3>
+
+                    <p>
+                        Understand what the calculator is estimating.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="methodology-grid">
+
+
+                <div>
+
+                    <h4>
+                        Transport
+                    </h4>
+
+                    <p>
+                        Distance is multiplied by the selected
+                        vehicle or transport-mode emission factor
+                        and divided by the number of passengers.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Electricity
+                    </h4>
+
+                    <p>
+                        Electricity consumption is multiplied by
+                        the electricity emission factor after
+                        accounting for the selected renewable share.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Food
+                    </h4>
+
+                    <p>
+                        Daily vegetarian and non-vegetarian meals
+                        are estimated using separate starter factors.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Waste
+                    </h4>
+
+                    <p>
+                        Waste generation is adjusted according to
+                        the selected recycling percentage.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Cooking
+                    </h4>
+
+                    <p>
+                        Cooking time is multiplied by the selected
+                        cooking-fuel factor.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Important
+                    </h4>
+
+                    <p>
+                        The factors in this prototype are illustrative
+                        starter values. They should be replaced with
+                        documented region-specific factors before
+                        scientific or official use.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-inner">
+
+        <div>
+
+            <strong>
+                🌱 Code Your Carbon
+            </strong>
+
+            <p>
+                Measure → Understand → Simulate → Act
+            </p>
+
+        </div>
+
+
+        <span>
+            Personal carbon intelligence prototype
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SCRIPT
+========================================================= -->
+
+<script
+    src="script.js"
+    defer
+></script>
+
+</body>
+
+</html>
